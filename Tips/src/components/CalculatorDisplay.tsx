@@ -10,7 +10,12 @@ export const CalculatorDisplay: React.FC<CalculatorDisplayProps> = ({ currentInp
           Enter Amount
         </Text>
         <View className="min-h-[60px] flex items-center justify-end">
-          <Text className="text-5xl font-bold text-gray-800">
+          <Text 
+            className="text-5xl font-bold text-gray-800"
+            numberOfLines={1}
+            adjustsFontSizeToFit
+            minimumFontScale={0.5}
+          >
             {currentInput || '0'}
           </Text>
         </View>
