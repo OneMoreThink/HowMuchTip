@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text, Platform } from 'react-native';
 import { NumberButton } from './ui/NumberButton';
 import { NumberPadProps } from '../types';
 
@@ -10,7 +10,22 @@ export const NumberPad: React.FC<NumberPadProps> = ({
   onAdd
 }) => {
   return (
-    <View className="bg-white rounded-3xl shadow-md p-6 mb-4">
+    <View 
+      className="bg-white rounded-3xl p-6 mb-4"
+      style={{
+        ...Platform.select({
+          ios: {
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 4 },
+            shadowOpacity: 0.15,
+            shadowRadius: 8,
+          },
+          android: {
+            elevation: 8,
+          },
+        }),
+      }}
+    >
       <View className="mb-4">
         <View className="flex-row justify-between mb-3">
           <View className="w-[30%]">
@@ -58,7 +73,7 @@ export const NumberPad: React.FC<NumberPadProps> = ({
           <View className="w-[30%]">
             <NumberButton 
               onClick={onDelete}
-              className="bg-red-200"
+              className="bg-red-50 border-red-200"
             >
               ⌫
             </NumberButton>
@@ -70,14 +85,40 @@ export const NumberPad: React.FC<NumberPadProps> = ({
         <TouchableOpacity
           onPress={onClear}
           className="flex-1 bg-gray-500 py-4 rounded-2xl items-center justify-center mr-2"
-          activeOpacity={0.7}
+          activeOpacity={0.8}
+          style={{
+            ...Platform.select({
+              ios: {
+                shadowColor: '#000',
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.2,
+                shadowRadius: 4,
+              },
+              android: {
+                elevation: 3,
+              },
+            }),
+          }}
         >
           <Text className="text-white text-xl font-bold">Clear</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={onAdd}
           className="flex-1 bg-green-500 py-4 rounded-2xl items-center justify-center ml-2"
-          activeOpacity={0.7}
+          activeOpacity={0.8}
+          style={{
+            ...Platform.select({
+              ios: {
+                shadowColor: '#000',
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.2,
+                shadowRadius: 4,
+              },
+              android: {
+                elevation: 3,
+              },
+            }),
+          }}
         >
           <Text className="text-white text-xl font-bold">+ Add</Text>
         </TouchableOpacity>
