@@ -11,23 +11,23 @@ export const NumberPad: React.FC<NumberPadProps> = ({
 }) => {
   return (
     <View 
-      className="bg-white rounded-3xl p-6 mb-4"
+      className="bg-white rounded-2xl p-2 mb-1"
       style={{
         ...Platform.select({
           ios: {
             shadowColor: '#000',
-            shadowOffset: { width: 0, height: 4 },
-            shadowOpacity: 0.15,
-            shadowRadius: 8,
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.1,
+            shadowRadius: 4,
           },
           android: {
-            elevation: 8,
+            elevation: 4,
           },
         }),
       }}
     >
-      <View className="mb-4">
-        <View className="flex-row justify-between mb-3">
+      <View className="mb-2">
+        <View className="flex-row justify-between mb-2">
           <View className="w-[30%]">
             <NumberButton onClick={() => onDigit('1')}>1</NumberButton>
           </View>
@@ -39,7 +39,7 @@ export const NumberPad: React.FC<NumberPadProps> = ({
           </View>
         </View>
         
-        <View className="flex-row justify-between mb-3">
+        <View className="flex-row justify-between mb-2">
           <View className="w-[30%]">
             <NumberButton onClick={() => onDigit('4')}>4</NumberButton>
           </View>
@@ -51,7 +51,7 @@ export const NumberPad: React.FC<NumberPadProps> = ({
           </View>
         </View>
         
-        <View className="flex-row justify-between mb-3">
+        <View className="flex-row justify-between mb-2">
           <View className="w-[30%]">
             <NumberButton onClick={() => onDigit('7')}>7</NumberButton>
           </View>
@@ -84,43 +84,43 @@ export const NumberPad: React.FC<NumberPadProps> = ({
       <View className="flex-row">
         <TouchableOpacity
           onPress={onClear}
-          className="flex-1 bg-gray-500 py-4 rounded-2xl items-center justify-center mr-2"
+          className="flex-1 bg-gray-500 py-2.5 rounded-xl items-center justify-center mr-1"
           activeOpacity={0.8}
           style={{
             ...Platform.select({
               ios: {
                 shadowColor: '#000',
-                shadowOffset: { width: 0, height: 2 },
-                shadowOpacity: 0.2,
-                shadowRadius: 4,
+                shadowOffset: { width: 0, height: 1 },
+                shadowOpacity: 0.15,
+                shadowRadius: 2,
               },
               android: {
-                elevation: 3,
+                elevation: 2,
               },
             }),
           }}
         >
-          <Text className="text-white text-xl font-bold">Clear</Text>
+          <Text className="text-white text-lg font-bold">Clear</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={onAdd}
-          className="flex-1 bg-green-500 py-4 rounded-2xl items-center justify-center ml-2"
+          className="flex-1 bg-green-500 py-2.5 rounded-xl items-center justify-center ml-1"
           activeOpacity={0.8}
           style={{
             ...Platform.select({
               ios: {
                 shadowColor: '#000',
-                shadowOffset: { width: 0, height: 2 },
-                shadowOpacity: 0.2,
-                shadowRadius: 4,
+                shadowOffset: { width: 0, height: 1 },
+                shadowOpacity: 0.15,
+                shadowRadius: 2,
               },
               android: {
-                elevation: 3,
+                elevation: 2,
               },
             }),
           }}
         >
-          <Text className="text-white text-xl font-bold">+ Add</Text>
+          <Text className="text-white text-lg font-bold">+ Add</Text>
         </TouchableOpacity>
       </View>
     </View>

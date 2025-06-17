@@ -22,29 +22,40 @@ export const TipCalculatorScreen: React.FC = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-gradient-to-br from-blue-50 to-indigo-100">
-      <View className="flex-1 p-4">
-        <CalculatorDisplay currentInput={currentInput} />
+      <View className="flex-1 p-3">
+        {/* Calculator Display - 고정 크기 */}
+        <View className="flex-shrink-0">
+          <CalculatorDisplay currentInput={currentInput} />
+        </View>
         
-        <NumberPad
-          onDigit={addDigit}
-          onDelete={deleteDigit}
-          onClear={clear}
-          onAdd={addItem}
-        />
+        <View className="flex-shrink-0">
+          <NumberPad
+            onDigit={addDigit}
+            onDelete={deleteDigit}
+            onClear={clear}
+            onAdd={addItem}
+          />
+        </View>
         
-        <TipSelector
-          selectedTip={selectedTip}
-          onTipChange={setSelectedTip}
-        />
+        {/* TipSelector - 작은 공간 */}
+        <View className="flex-shrink-0">
+          <TipSelector
+            selectedTip={selectedTip}
+            onTipChange={setSelectedTip}
+          />
+        </View>
         
-        <ResultSummary
-          subtotal={calculations.subtotal}
-          tipAmount={calculations.tipAmount}
-          total={calculations.total}
-          selectedTip={selectedTip}
-          items={items}
-          onResetItems={resetItems}
-        />
+        {/* ResultSummary - 적당한 공간 */}
+        <View className="flex-1">
+          <ResultSummary
+            subtotal={calculations.subtotal}
+            tipAmount={calculations.tipAmount}
+            total={calculations.total}
+            selectedTip={selectedTip}
+            items={items}
+            onResetItems={resetItems}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
