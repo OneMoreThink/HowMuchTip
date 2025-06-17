@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, Platform } from 'react-native';
+import { Platform, Pressable, Text } from 'react-native';
 import { NumberButtonProps } from '../../types';
 
 export const NumberButton: React.FC<NumberButtonProps> = ({ 
@@ -19,18 +19,18 @@ export const NumberButton: React.FC<NumberButtonProps> = ({
             shadowColor: '#000',
             shadowOffset: { 
               width: 0, 
-              height: pressed ? 2 : 4 
+              height: pressed ? 1 : 2 
             },
-            shadowOpacity: pressed ? 0.08 : 0.15,
-            shadowRadius: pressed ? 4 : 8,
+            shadowOpacity: pressed ? 0.1 : 0.2,
+            shadowRadius: pressed ? 2 : 4,
           },
           android: {
-            elevation: pressed ? 2 : 5,
+            elevation: pressed ? 2 : 4,
           },
         }),
       }
     ]}
-    className={`py-4 rounded-2xl border border-gray-200 items-center justify-center ${className}`}
+    className={`py-4 rounded-xl border border-gray-200 items-center justify-center ${className}`}
   >
     {({ pressed }) => (
       <Text 

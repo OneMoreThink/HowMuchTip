@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { ResultSummaryProps } from '../types';
 
 export const ResultSummary: React.FC<ResultSummaryProps> = ({
@@ -11,36 +11,36 @@ export const ResultSummary: React.FC<ResultSummaryProps> = ({
   onResetItems
 }) => {
   return (
-    <View className="bg-white rounded-2xl shadow-lg shadow-blue-200/50 flex-1 p-3">
-      {/* 계산 결과 */}
-      <View className="space-y-2">
-        <View className="flex-row justify-between items-center">
-          <Text className="text-lg font-semibold text-gray-600">Subtotal</Text>
-          <Text className="text-xl font-bold text-gray-800">${subtotal.toFixed(2)}</Text>
-        </View>
-        
-        <View className="flex-row justify-between items-center">
-          <Text className="text-lg font-semibold text-blue-600">Tip ({selectedTip}%)</Text>
-          <Text className="text-xl font-bold text-blue-600">${tipAmount.toFixed(2)}</Text>
-        </View>
-        
-        <View className="border-t-2 border-gray-200 pt-2">
+    <View className="bg-white rounded-2xl shadow-lg shadow-blue-200/50 p-4 h-full">
+      <View>
+        <View className="space-y-3">
           <View className="flex-row justify-between items-center">
-            <Text className="text-xl font-bold text-gray-800">Total</Text>
-            <Text className="text-3xl font-bold text-green-600">${total.toFixed(2)}</Text>
+            <Text className="text-xl font-semibold text-gray-600">Subtotal</Text>
+            <Text className="text-2xl font-bold text-gray-800">${subtotal.toFixed(2)}</Text>
+          </View>
+          
+          <View className="flex-row justify-between items-center">
+            <Text className="text-xl font-semibold text-blue-600">Tip ({selectedTip}%)</Text>
+            <Text className="text-2xl font-bold text-blue-600">${tipAmount.toFixed(2)}</Text>
+          </View>
+          
+          <View className="border-t-2 border-gray-200 pt-3">
+            <View className="flex-row justify-between items-center">
+              <Text className="text-2xl font-bold text-gray-800">Total</Text>
+              <Text className="text-4xl font-bold text-green-600">${total.toFixed(2)}</Text>
+            </View>
           </View>
         </View>
-      </View>
-
-      {/* 전체 초기화 */}
-      {items.length > 0 && (
         <TouchableOpacity
-          onPress={onResetItems}
-          className="w-full mt-2 bg-red-500 active:bg-red-600 py-2 rounded-lg items-center justify-center"
-        >
-          <Text className="text-white text-sm font-bold">Reset All</Text>
-        </TouchableOpacity>
-      )}
+  onPress={onResetItems}
+  className={`w-full py-2 mt-2 rounded-xl items-center justify-center ${
+    items.length > 0 ? 'bg-red-500 active:bg-red-600' : 'bg-gray-300'
+  }`}
+  disabled={items.length === 0}
+>
+  <Text className="text-white text-lg font-bold">Reset All</Text>
+</TouchableOpacity>
+      </View>
     </View>
   );
 };

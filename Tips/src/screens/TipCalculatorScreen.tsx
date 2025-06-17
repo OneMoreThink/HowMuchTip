@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, SafeAreaView } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 import { CalculatorDisplay } from '../components/CalculatorDisplay';
 import { NumberPad } from '../components/NumberPad';
-import { TipSelector } from '../components/TipSelector';
 import { ResultSummary } from '../components/ResultSummary';
+import { TipSelector } from '../components/TipSelector';
 import { useTipCalculator } from '../hooks/useTipCalculator';
 
 export const TipCalculatorScreen: React.FC = () => {
@@ -22,13 +22,14 @@ export const TipCalculatorScreen: React.FC = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-gradient-to-br from-blue-50 to-indigo-100">
-      <View className="flex-1 p-3">
-        {/* Calculator Display - 고정 크기 */}
-        <View className="flex-shrink-0">
+      <View className="flex-1 p-4">
+        {/* Calculator Display */}
+        <View className="h-[80px] mb-4">
           <CalculatorDisplay currentInput={currentInput} />
         </View>
         
-        <View className="flex-shrink-0">
+        {/* NumberPad */}
+        <View className="h-[360px] mb-4">
           <NumberPad
             onDigit={addDigit}
             onDelete={deleteDigit}
@@ -37,16 +38,16 @@ export const TipCalculatorScreen: React.FC = () => {
           />
         </View>
         
-        {/* TipSelector - 작은 공간 */}
-        <View className="flex-shrink-0">
+        {/* TipSelector */}
+        <View className="h-[70px] mb-4">
           <TipSelector
             selectedTip={selectedTip}
             onTipChange={setSelectedTip}
           />
         </View>
         
-        {/* ResultSummary - 적당한 공간 */}
-        <View className="flex-1">
+        {/* ResultSummary */}
+        <View className="h-[180px]">
           <ResultSummary
             subtotal={calculations.subtotal}
             tipAmount={calculations.tipAmount}
